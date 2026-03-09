@@ -1,0 +1,149 @@
+[
+  {
+    "name": "Lucas",
+    "poste": "passeur",
+    "passe": 5,
+    "reception": 3,
+    "attaque": 2
+  },
+  {
+    "name": "Emma",
+    "poste": "attaquant",
+    "passe": 2,
+    "reception": 3,
+    "attaque": 5
+  },
+  {
+    "name": "Maxime",
+    "poste": "reception",
+    "passe": 3,
+    "reception": 5,
+    "attaque": 2
+  },
+  {
+    "name": "Paul",
+    "poste": "polyvalent",
+    "passe": 3,
+    "reception": 3,
+    "attaque": 3
+  },
+  {
+    "name": "Thomas",
+    "poste": "attaquant",
+    "passe": 2,
+    "reception": 3,
+    "attaque": 4
+  },
+  {
+    "name": "Julie",
+    "poste": "passeur",
+    "passe": 4,
+    "reception": 3,
+    "attaque": 2
+  },
+  {
+    "name": "Sarah",
+    "poste": "polyvalent",
+    "passe": 3,
+    "reception": 4,
+    "attaque": 3
+  },
+  {
+    "name": "Antoine",
+    "poste": "reception",
+    "passe": 2,
+    "reception": 5,
+    "attaque": 2
+  },
+  {
+    "name": "Camille",
+    "poste": "attaquant",
+    "passe": 2,
+    "reception": 3,
+    "attaque": 5
+  },
+  {
+    "name": "Leo",
+    "poste": "polyvalent",
+    "passe": 4,
+    "reception": 3,
+    "attaque": 3
+  },
+  {
+    "name": "Nina",
+    "poste": "passeur",
+    "passe": 5,
+    "reception": 2,
+    "attaque": 2
+  },
+  {
+    "name": "Hugo",
+    "poste": "attaquant",
+    "passe": 3,
+    "reception": 3,
+    "attaque": 4
+  },
+  {
+    "name": "Clara",
+    "poste": "reception",
+    "passe": 2,
+    "reception": 4,
+    "attaque": 3
+  },
+  {
+    "name": "Alex",
+    "poste": "polyvalent",
+    "passe": 3,
+    "reception": 3,
+    "attaque": 3
+  },
+  {
+    "name": "Nathan",
+    "poste": "attaquant",
+    "passe": 2,
+    "reception": 3,
+    "attaque": 5
+  },
+  {
+    "name": "Laura",
+    "poste": "reception",
+    "passe": 3,
+    "reception": 5,
+    "attaque": 2
+  },
+  {
+    "name": "Kevin",
+    "poste": "polyvalent",
+    "passe": 4,
+    "reception": 3,
+    "attaque": 3
+  },
+  {
+    "name": "Chloe",
+    "poste": "passeur",
+    "passe": 4,
+    "reception": 3,
+    "attaque": 2
+  },
+  {
+    "name": "Romain",
+    "poste": "attaquant",
+    "passe": 2,
+    "reception": 2,
+    "attaque": 5
+  },
+  {
+    "name": "Eva",
+    "poste": "polyvalent",
+    "passe": 3,
+    "reception": 4,
+    "attaque": 3
+  },
+  {
+    "name": "Julien",
+    "poste": "reception",
+    "passe": 3,
+    "reception": 4,
+    "attaque": 2
+  }
+]
