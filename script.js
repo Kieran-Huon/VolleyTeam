@@ -139,20 +139,28 @@ document.getElementById("regenBtn").style.display="block"
 document.getElementById("regenBtn").onclick = generateTeams
 
 
+
 function calculateTeams(playerCount){
 
-const possibleTeams = [2,4,6,8]
+const options = [2,4,6,8]
 
 let bestTeams = 2
-let bestSize = 0
+let bestScore = -Infinity
 
-possibleTeams.forEach(t=>{
+options.forEach(t=>{
 
 let size = playerCount / t
 
-if(size >= 4 && size > bestSize){
+if(size > 6) return
+
+let score = size
+
+if(size >= 4) score += 5
+if(size >= 5) score += 5
+
+if(score > bestScore){
+bestScore = score
 bestTeams = t
-bestSize = size
 }
 
 })
@@ -160,6 +168,7 @@ bestSize = size
 return bestTeams
 
 }
+
 
 
 function generateTeams(){
@@ -176,7 +185,6 @@ let teams = Array.from({length:teamCount}, ()=>[])
 shuffled.forEach((player,i)=>{
 teams[i % teamCount].push(player)
 })
-
 
 teams.forEach((team,i)=>{
 
