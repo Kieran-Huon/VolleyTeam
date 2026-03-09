@@ -1,3 +1,5 @@
+
+
 // let players = []
 // let selectedPlayers = []
 
@@ -5,23 +7,31 @@
 // .then(res => res.json())
 // .then(data => {
 // players = data
-// console.log(players)
 // displayPlayers()
 // })
 
 // function displayPlayers(){
 
 // const container = document.getElementById("playersList")
+// container.innerHTML=""
 
 // players.forEach((p,i)=>{
 
 // const div = document.createElement("div")
 // div.className="player"
 
+// // div.innerHTML = `
+// // <label class="player-label">
+// // <input type="checkbox" value="${i}">
+// // <span>${p.name}</span>
+// // <span class="poste">${p.poste}</span>
+// // </label>
+// // `
 // div.innerHTML = `
-// <label>
+// <label class="player-label">
 // <input type="checkbox" value="${i}">
-// ${p.name} (${p.poste})
+// <div class="player-name">${p.name}</div>
+// <div class="poste">${p.poste}</div>
 // </label>
 // `
 
@@ -39,6 +49,11 @@
 // selectedPlayers.push(players[c.value])
 // })
 
+// if(selectedPlayers.length < 4){
+// alert("Pas assez de joueurs")
+// return
+// }
+
 // generateTeams()
 
 // document.getElementById("regenBtn").style.display="block"
@@ -47,6 +62,39 @@
 
 // document.getElementById("regenBtn").onclick = generateTeams
 
+
+
+// function calculateTeams(playerCount){
+
+// const options = [2,4,6,8]
+
+// let bestTeams = 2
+// let bestScore = -Infinity
+
+// options.forEach(t=>{
+
+// let size = playerCount / t
+
+// if(size > 6) return
+
+// let score = size
+
+// if(size >= 4) score += 5
+// if(size >= 5) score += 5
+
+// if(score > bestScore){
+// bestScore = score
+// bestTeams = t
+// }
+
+// })
+
+// return bestTeams
+
+// }
+
+
+
 // function generateTeams(){
 
 // const teamsContainer = document.getElementById("teams")
@@ -54,10 +102,7 @@
 
 // let shuffled = [...selectedPlayers].sort(()=>Math.random()-0.5)
 
-// let teamCount = 2
-
-// if(selectedPlayers.length >= 12) teamCount = 4
-// if(selectedPlayers.length >= 18) teamCount = 6
+// let teamCount = calculateTeams(selectedPlayers.length)
 
 // let teams = Array.from({length:teamCount}, ()=>[])
 
@@ -70,16 +115,17 @@
 // const div = document.createElement("div")
 // div.className="team"
 
-// div.innerHTML = `<h2>Equipe ${i+1}</h2>`
+// let html = `<h2>Equipe ${i+1}</h2>`
 
 // team.forEach(p=>{
-// div.innerHTML += `<p>${p.name} (${p.poste})</p>`
+// html += `<div class="playerTeam">${p.name} <span>${p.poste}</span></div>`
 // })
+
+// div.innerHTML = html
 
 // teamsContainer.appendChild(div)
 
 // })
-
 
 // }
 
@@ -88,7 +134,7 @@ let selectedPlayers = []
 
 fetch('players.json')
 .then(res => res.json())
-.then(data => {
+.then(data=>{
 players = data
 displayPlayers()
 })
@@ -103,11 +149,11 @@ players.forEach((p,i)=>{
 const div = document.createElement("div")
 div.className="player"
 
-div.innerHTML = `
+div.innerHTML=`
 <label class="player-label">
 <input type="checkbox" value="${i}">
-<span>${p.name}</span>
-<span class="poste">${p.poste}</span>
+<div class="player-name">${p.name}</div>
+<div class="poste">${p.poste}</div>
 </label>
 `
 
@@ -117,11 +163,50 @@ container.appendChild(div)
 
 }
 
-document.getElementById("generateBtn").onclick = ()=>{
+/* recherche */
 
-selectedPlayers = []
+document.getElementById("search").addEventListener("input",function(){
 
-document.querySelectorAll("input[type=checkbox]:checked").forEach(c=>{
+const value = this.value.toLowerCase()
+
+document.querySelectorAll(".player").forEach(player=>{
+
+const text = player.innerText.toLowerCase()
+
+player.style.display = text.includes(value) ? "block" : "none"
+
+})
+
+})
+
+/* select all */
+
+document.getElementById("selectAll").onclick=()=>{
+
+document.querySelectorAll("#playersList input").forEach(c=>{
+c.checked=true
+})
+
+}
+
+/* deselect */
+
+document.getElementById("deselectAll").onclick=()=>{
+
+document.querySelectorAll("#playersList input").forEach(c=>{
+c.checked=false
+})
+
+}
+
+
+/* génération */
+
+document.getElementById("generateBtn").onclick=()=>{
+
+selectedPlayers=[]
+
+document.querySelectorAll("#playersList input:checked").forEach(c=>{
 selectedPlayers.push(players[c.value])
 })
 
@@ -136,31 +221,30 @@ document.getElementById("regenBtn").style.display="block"
 
 }
 
-document.getElementById("regenBtn").onclick = generateTeams
-
+document.getElementById("regenBtn").onclick=generateTeams
 
 
 function calculateTeams(playerCount){
 
-const options = [2,4,6,8]
+const options=[2,4,6,8]
 
-let bestTeams = 2
-let bestScore = -Infinity
+let bestTeams=2
+let bestScore=-Infinity
 
 options.forEach(t=>{
 
-let size = playerCount / t
+let size=playerCount/t
 
-if(size > 6) return
+if(size>6) return
 
-let score = size
+let score=size
 
-if(size >= 4) score += 5
-if(size >= 5) score += 5
+if(size>=4) score+=5
+if(size>=5) score+=5
 
-if(score > bestScore){
-bestScore = score
-bestTeams = t
+if(score>bestScore){
+bestScore=score
+bestTeams=t
 }
 
 })
@@ -170,34 +254,33 @@ return bestTeams
 }
 
 
-
 function generateTeams(){
 
-const teamsContainer = document.getElementById("teams")
+const teamsContainer=document.getElementById("teams")
 teamsContainer.innerHTML=""
 
-let shuffled = [...selectedPlayers].sort(()=>Math.random()-0.5)
+let shuffled=[...selectedPlayers].sort(()=>Math.random()-0.5)
 
-let teamCount = calculateTeams(selectedPlayers.length)
+let teamCount=calculateTeams(selectedPlayers.length)
 
-let teams = Array.from({length:teamCount}, ()=>[])
+let teams=Array.from({length:teamCount},()=>[])
 
 shuffled.forEach((player,i)=>{
-teams[i % teamCount].push(player)
+teams[i%teamCount].push(player)
 })
 
 teams.forEach((team,i)=>{
 
-const div = document.createElement("div")
+const div=document.createElement("div")
 div.className="team"
 
-let html = `<h2>Equipe ${i+1}</h2>`
+let html=`<h2>Equipe ${i+1}</h2>`
 
 team.forEach(p=>{
-html += `<div class="playerTeam">${p.name} <span>${p.poste}</span></div>`
+html+=`<div class="playerTeam">${p.name} <span>${p.poste}</span></div>`
 })
 
-div.innerHTML = html
+div.innerHTML=html
 
 teamsContainer.appendChild(div)
 

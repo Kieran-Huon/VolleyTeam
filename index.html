@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -8,6 +8,37 @@
 <body>
 
 <h1>🏐 Générateur d'équipes Volley</h1>
+
+<div id="playersList"></div>
+
+<button id="generateBtn">Générer les équipes</button>
+<button id="regenBtn" style="display:none;">🔁 Regénérer</button>
+
+<div id="teams"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volley Teams</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🏐 Générateur d'équipes Volley</h1>
+
+<input id="search" type="text" placeholder="Rechercher joueur ou poste...">
+
+<div class="controls">
+<button id="selectAll">Tout sélectionner</button>
+<button id="deselectAll">Tout décocher</button>
+</div>
 
 <div id="playersList"></div>
 
